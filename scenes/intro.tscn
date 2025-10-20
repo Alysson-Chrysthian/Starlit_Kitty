@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://7rnruxf6a3t7"]
+
+[ext_resource type="PackedScene" uid="uid://dn61242td6635" path="res://scenes/animations/fade_in.tscn" id="1_ioskq"]
+[ext_resource type="Script" uid="uid://dli36o27f4ijm" path="res://scripts/scenes/intro.gd" id="1_yjqpq"]
+[ext_resource type="PackedScene" uid="uid://b7mmetoylx4ly" path="res://scenes/animations/fade_out.tscn" id="3_4bx60"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i2l1n"]
+font_size = 24
+
+[node name="intro" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_yjqpq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "DEVELOPED BY SALVA STUDIO"
+label_settings = SubResource("LabelSettings_i2l1n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="fade_in" parent="." instance=ExtResource("1_ioskq")]
+
+[node name="fade_out" parent="." instance=ExtResource("3_4bx60")]
+
+[connection signal="animation_finished" from="fade_in" to="." method="_on_fade_in_animation_finished"]
+[connection signal="animation_finished" from="fade_out" to="." method="_on_fade_out_animation_finished"]

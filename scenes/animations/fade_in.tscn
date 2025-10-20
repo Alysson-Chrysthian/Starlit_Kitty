@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn61242td6635"]
+
+[ext_resource type="Script" uid="uid://bce3svl4tl640" path="res://scripts/animations/fade_in.gd" id="1_k2viv"]
+
+[sub_resource type="Animation" id="Animation_ioskq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade_in/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k2viv"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade_in/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yjqpq"]
+_data = {
+&"RESET": SubResource("Animation_ioskq"),
+&"fade_in": SubResource("Animation_k2viv")
+}
+
+[node name="fade_in" type="AnimationPlayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_yjqpq")
+}
+script = ExtResource("1_k2viv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
