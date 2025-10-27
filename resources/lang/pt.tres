@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Pt" load_steps=2 format=3 uid="uid://vp4bvpowww0p"]
+
+[ext_resource type="Script" uid="uid://df7apoyh5n1hk" path="res://resources/lang/pt.gd" id="1_8ct4q"]
+
+[resource]
+script = ExtResource("1_8ct4q")
+metadata/_custom_type_script = "uid://df7apoyh5n1hk"

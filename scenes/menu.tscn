@@ -1,29 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnxr6e6ejgfdl"]
+[gd_scene load_steps=6 format=3 uid="uid://cnxr6e6ejgfdl"]
 
+[ext_resource type="Texture2D" uid="uid://cocgcwvc4wovc" path="res://assets/background/menu.jpg" id="1_con2f"]
+[ext_resource type="Theme" uid="uid://dpak1h21shjev" path="res://themes/ui.tres" id="1_mhnvy"]
+[ext_resource type="Script" uid="uid://bx2531w1y1vil" path="res://scripts/scenes/menu.gd" id="1_vjb58"]
 [ext_resource type="PackedScene" uid="uid://dn61242td6635" path="res://scenes/animations/fade_in.tscn" id="1_yqeox"]
+[ext_resource type="FontFile" uid="uid://db5dfglepgplc" path="res://assets/fonts/Minecraft.ttf" id="4_4ytvr"]
 
-[node name="menu" type="ColorRect"]
+[node name="menu" type="TextureRect"]
+offset_right = 1140.0
+offset_bottom = 639.0
+theme = ExtResource("1_mhnvy")
+texture = ExtResource("1_con2f")
+script = ExtResource("1_vjb58")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.5882353)
 
-[node name="Label" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 134.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 100
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_4ytvr")
+theme_override_font_sizes/font_size = 80
+text = "Starlit Kitty"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
+offset_left = 40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "MENU"
+theme_override_constants/separation = 20
+
+[node name="play_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+
+[node name="settings_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+
+[node name="quit_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
 
 [node name="fade_in" parent="." instance=ExtResource("1_yqeox")]
+
+[connection signal="animation_finished" from="fade_in" to="fade_in" method="_on_animation_finished"]
